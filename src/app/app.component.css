@@ -1,0 +1,54 @@
+
+table{
+    background: #ccc;
+    table-layout: fixed;
+    width: 100%;
+    border-collapse: collapse;
+    text-align: center;
+    }
+table th,table tbody td{
+    background:#ddd;
+    border-bottom:1px solid #eee;
+    position: relative
+}
+table th{
+    font-size: 12px;
+    border-right:1px solid #aaa;
+}
+table th:active,table th:focus,table th.active{
+    background:#aaa;
+}
+.positive{
+    color:green;
+}
+.negative{
+    color:red;
+}
+.neutral,.todayChg{
+    color:grey;
+}
+.btn{
+   text-align: center;
+   padding: 8px;
+   background: #ccc;
+}
+tbody td:nth-child(1),.btn{
+    color: #2592ef
+}
+.arrow{
+    color: blue;
+    display: inline-block;
+    position: absolute;
+    right: 15px;
+}
+.upArrow{
+    transform:rotate(90deg);
+    top: 15px;
+}
+.dnArrow{
+    transform:rotate(-90deg);
+    bottom:15px
+}
+.container{
+  font-weight: bold;
+}

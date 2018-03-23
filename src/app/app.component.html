@@ -1,0 +1,31 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div class="container">
+  <table>
+    <thead>
+      <th [ngClass]="{'active':parameter==='accountId'}" (click)="sorting('accountId')">
+        Account
+        <span class="arrow dnArrow" *ngIf="!(sortOrd===1)&&(prevParam==='accountId')">&lt;</span>
+        <span class="arrow upArrow" *ngIf="(sortOrd===1)&&(prevParam==='accountId')">&lt;</span>
+
+      </th>
+      <th [ngClass]="{'active':parameter==='availableCash'}" (click)="sorting('availableCash')">
+        <p>Available Cash
+          <span class="arrow dnArrow" *ngIf="!(sortOrd===1)&&(prevParam==='availableCash')">&lt;</span>
+          <span class="arrow upArrow" *ngIf="(sortOrd===1)&&(prevParam==='availableCash')">&lt;</span>
+        </p>
+        <p class="todayChg">Today's change</p>
+      </th>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of items|limitTo:index:rawResponse|sorting:parameter:sortOrd:prevParam">
+        <td>{{item.accountName}} - {{item.accountId}}</td>
+        <td>
+          <p>{{item.availableCash|currency:'USD':true}}</p>
+          <p [ngClass]="{'positive':!(item.change).match('-'),'negative':(item.change).match('-'),'neutral':(item.change).match('0.00')}">
+            {{item.change|currency:'USD':true}}% / {{item.totalChange|currency:'USD':true}}</p>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="btn" (click)="loadMore()" *ngIf='!hideLoad'>Load more</div>
+</div>
